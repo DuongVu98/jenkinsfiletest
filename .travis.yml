@@ -10,6 +10,4 @@ install:
 
 script:
   - yarn test
-
-build:
   - docker build -t tony16019/travis-app .
