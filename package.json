@@ -1,0 +1,19 @@
+{
+  "name": "jenkinsfiletest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"This is test\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuongVu98/jenkinsfiletest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuongVu98/jenkinsfiletest/issues"
+  },
+  "homepage": "https://github.com/DuongVu98/jenkinsfiletest#readme"
+}

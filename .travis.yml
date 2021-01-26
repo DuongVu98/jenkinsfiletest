@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - 13.7.0
+cache: yarn
+
+install:
+  - yarn install
+
+script:
+  - yarn test
