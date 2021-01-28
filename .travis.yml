@@ -1,22 +1,18 @@
+language: node_js
+  node_js:
+    - 13.7.0
+  cache: yarn
+  services:
+    - docker
+
 jobs:
   - include:
-    - language: node_js
-      node_js:
-        - 13.7.0
-      cache: yarn
-      services:
-        - docker
-
+    - stage: test
       install:
         - yarn install
-
       script:
         - yarn test
-        - docker build -t tony16019/travis-app .
-      # - stage: test
-      #   script:
-      #     - yarn test
 
-      # - stage: build
-      #   script:
-      #     - docker build -t tony16019/travis-app .
+    - stage: build
+      script:
+        - docker build -t tony16019/travis-app .
