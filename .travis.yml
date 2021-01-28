@@ -17,12 +17,12 @@ jobs:
   - include:
     - stage: test
       script:
-        - pwd
+        - ls
         - cd $TRAVIS_BUILD_DIR/$PROJECT && pwd
         - echo "test"
     - stage: build
       script:
-        - pwd
+        - ls
         - cd $TRAVIS_BUILD_DIR/$PROJECT && pwd
         - echo "build"
 
