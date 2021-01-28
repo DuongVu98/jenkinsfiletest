@@ -11,12 +11,13 @@ stage:
 
 jobs:
   - include:
-    - stage: test
-      install:
-        - yarn install
-      script:
-        - yarn test
+    - name: job1
+      - stage: test
+        install:
+          - yarn install
+        script:
+          - yarn test
 
-    - stage: build
-      script:
-        - docker build -t tony16019/travis-app .
+      - stage: build
+        script:
+          - docker build -t tony16019/travis-app .
