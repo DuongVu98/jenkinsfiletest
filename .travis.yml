@@ -5,9 +5,8 @@ cache: yarn
 services:
   - docker
 
-stage:
-  - test
-  - build
+name:
+  - job1
 
 jobs:
   - include:
