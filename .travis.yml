@@ -5,15 +5,33 @@ cache: yarn
 services:
   - docker
 
+env:
+  - PROJECT=project1
+  - PROJECT=project2
+
+stage:
+  - test
+  - build
+
 jobs:
   - include:
-    - name: job1
-      - stage: test
-        install:
-          - yarn install
-        script:
-          - yarn test
+    - stage: test
+      script:
+        - cd $PROJECT && pwd
+        - echo "test"
+    - stage: build
+      script:
+        - cd $PROJECT && pwd
+        - echo "build"
 
-      - stage: build
-        script:
-          - docker build -t tony16019/travis-app .
+# jobs:
+#   - include:
+#     - stage: test
+#       install:
+#         - yarn install
+#       script:
+#         - yarn test
+
+#     - stage: build
+#       script:
+#         - docker build -t tony16019/travis-app .
