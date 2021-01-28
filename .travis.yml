@@ -5,6 +5,10 @@ language: node_js
   services:
     - docker
 
+stage:
+  - test
+  - build
+
 jobs:
   - include:
     - stage: test
