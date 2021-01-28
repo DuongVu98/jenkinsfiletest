@@ -1,1 +1,2 @@
 echo "test"
+docker images
