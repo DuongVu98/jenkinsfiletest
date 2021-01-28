@@ -5,13 +5,13 @@ cache: yarn
 services:
   - docker
 
-env:
-  - PROJECT=project1
-  - PROJECT=project2
-
 stage:
   - test
   - build
+
+env:
+  - PROJECT=project1
+  - PROJECT=project2
 
 jobs:
   - include:
