@@ -10,6 +10,10 @@ jobs:
       install:
         - yarn install
 
-      script:
-        - yarn test
-        - docker build -t tony16019/travis-app .
+      - stage: test
+        script:
+          - yarn test
+
+      - stage: build
+        script:
+          - docker build -t tony16019/travis-app .
