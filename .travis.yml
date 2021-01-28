@@ -9,50 +9,28 @@ stage:
   - test
   - build
 
-# env:
-#   - PROJECT=project1
-#   - PROJECT=project2
-
 jobs:
   - include:
     - stage: test
-      env: PROJECT=project1
       before_install:
-        - chmod +x $PROJECT/script.sh
+        - chmod +x project1/script.sh
       script:
-        - cd $TRAVIS_BUILD_DIR/$PROJECT
+        - cd project1
         - ./script.sh
-    - stage: test
-      env: PROJECT=project2
+    - script:
+        - cd project2
+        - ./script.sh
       before_install:
-        - chmod +x $PROJECT/script.sh
-      script:
-        - cd $TRAVIS_BUILD_DIR/$PROJECT
-        - ./script.sh
-
+        - chmod +x project2/script.sh
+    
     - stage: build
-      env: PROJECT=project1
       before_install:
-        - chmod +x $PROJECT/script.sh
+        - chmod +x project1/script.sh
       script:
-        - cd $TRAVIS_BUILD_DIR/$PROJECT
+        - cd project1
         - ./script.sh
-    - stage: build
-      env: PROJECT=project2
+    - script:
+        - cd project2
+        - ./script.sh
       before_install:
-        - chmod +x $PROJECT/script.sh
-      script:
-        - cd $TRAVIS_BUILD_DIR/$PROJECT
-        - ./script.sh
-
-# jobs:
-#   - include:
-#     - stage: test
-#       install:
-#         - yarn install
-#       script:
-#         - yarn test
-
-#     - stage: build
-#       script:
-#         - docker build -t tony16019/travis-app .
+        - chmod +x project2/script.sh
