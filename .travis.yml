@@ -9,9 +9,9 @@ stage:
   - test
   - build
 
-env:
-  - PROJECT=project1
-  - PROJECT=project2
+# env:
+#   - PROJECT=project1
+#   - PROJECT=project2
 
 jobs:
   - include:
@@ -22,8 +22,23 @@ jobs:
       script:
         - cd $TRAVIS_BUILD_DIR/$PROJECT
         - ./script.sh
+    - stage: test
+      env: PROJECT=project2
+      before_install:
+        - chmod +x $PROJECT/script.sh
+      script:
+        - cd $TRAVIS_BUILD_DIR/$PROJECT
+        - ./script.sh
+
     - stage: build
       env: PROJECT=project1
+      before_install:
+        - chmod +x $PROJECT/script.sh
+      script:
+        - cd $TRAVIS_BUILD_DIR/$PROJECT
+        - ./script.sh
+    - stage: build
+      env: PROJECT=project2
       before_install:
         - chmod +x $PROJECT/script.sh
       script:
