@@ -5,9 +5,6 @@ cache: yarn
 services:
   - docker
 
-name:
-  - job1
-
 jobs:
   - include:
     - name: job1
