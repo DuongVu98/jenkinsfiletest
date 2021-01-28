@@ -17,11 +17,13 @@ jobs:
   - include:
     - stage: test
       script:
-        - "cd $PROJECT && pwd"
+        - echo $PROJECT
+        - cd $PROJECT && pwd
         - echo "test"
     - stage: build
       script:
-        - "cd $PROJECT && pwd"
+        - echo $PROJECT
+        - cd $PROJECT && pwd
         - echo "build"
 
 # jobs:
