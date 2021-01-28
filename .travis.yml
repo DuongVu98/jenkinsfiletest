@@ -18,12 +18,12 @@ jobs:
     - stage: test
       script:
         - echo $PROJECT
-        - cd $PROJECT && pwd
+        - cd $TRAVIS_BUILD_DIR/$PROJECT && pwd
         - echo "test"
     - stage: build
       script:
         - echo $PROJECT
-        - cd $PROJECT && pwd
+        - cd $TRAVIS_BUILD_DIR/$PROJECT && pwd
         - echo "build"
 
 # jobs:
