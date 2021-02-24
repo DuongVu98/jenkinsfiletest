@@ -16,7 +16,7 @@ pipeline{
         stage("Build Docker image"){
             steps{
                 script {
-                    dockerImage = docker.build(registry + ":latest", "-f docker/Dockerfile")
+                    dockerImage = docker.build(registry + ":latest", "-f docker/Dockerfile", ".")
                 }
 
                 script {
