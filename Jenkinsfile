@@ -26,7 +26,7 @@ pipeline{
                 }
                 
                 sh "docker rmi -f tony16019/buildfromjnenkins"
-                sh "docker image prune"
+                sh "docker image prune -f"
             }
         }
     }
