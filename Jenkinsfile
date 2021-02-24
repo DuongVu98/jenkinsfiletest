@@ -11,18 +11,25 @@ pipeline{
             steps{
                 echo "========executing A========"
             }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
         }
         stage("Build Docker image"){
             steps{
                 script {
                     dockerImage = docker.build imagename
                 }
-            }
-            steps{
-                echo "docker push"
-            }
-            steps{
-                sh 'docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi'
+                
+                sh "docker rmi -f tony16019/buildfromjnenkins"
             }
         }
     }
