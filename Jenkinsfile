@@ -2,8 +2,9 @@ pipeline{
     agent any
 
     environment {
+        registry = "tony16019/buildfromjnenkins"
+        registryCredential = "dockerhub"
         dockerImage = ''
-        imagename = "tony16019/buildfromjnenkins"
     }
 
     stages{
@@ -11,22 +12,17 @@ pipeline{
             steps{
                 echo "========executing A========"
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
         }
         stage("Build Docker image"){
             steps{
                 script {
-                    dockerImage = docker.build imagename
+                    dockerImage = docker.build registry
+                }
+
+                script {
+                    docker.withRegistry("", registryCredential) {
+                        dockerImage.push("latest")
+                    }
                 }
                 
                 sh "docker rmi -f tony16019/buildfromjnenkins"
