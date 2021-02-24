@@ -27,7 +27,7 @@ pipeline{
                 
                 sh "docker rmi -f tony16019/buildfromjnenkins"
 
-                sh 'docker images --filter "dangling=true" -q --no-trunc | xargs docker rmi'
+                sh """docker images --filter 'dangling=true' -q --no-trunc | xargs docker rmi"""
             }
         }
     }
