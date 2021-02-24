@@ -1,10 +1,11 @@
 pipeline{
-    agent {
-        dockerfile true
-    }
+    agent any
+
     environment {
         dockerImage = ''
+        imagename = "tony16019/buildfromjnenkins"
     }
+    
     stages{
         stage("A"){
             steps{
