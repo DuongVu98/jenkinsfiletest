@@ -16,7 +16,7 @@ pipeline{
         stage("Build Docker image"){
             steps{
                 script {
-                    dockerImage = docker.build registry
+                    dockerImage = docker.build(registry + ":latest", "-f docker/Dockerfile")
                 }
 
                 script {
@@ -26,7 +26,7 @@ pipeline{
                 }
                 
                 sh "docker rmi -f tony16019/buildfromjnenkins"
-                sh "docker image prune -f"
+                sh "docker image prune"
             }
         }
     }
