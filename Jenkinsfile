@@ -1,5 +1,10 @@
 pipeline{
-    agent any
+    agent {
+        dockerfile true
+    }
+    environment {
+        dockerImage = ''
+    }
     stages{
         stage("A"){
             steps{
@@ -14,6 +19,13 @@ pipeline{
                 }
                 failure{
                     echo "========A execution failed========"
+                }
+            }
+        }
+        stage("Build Docker image"){
+            steps{
+                script {
+                    dockerImage = docker.build imagename
                 }
             }
         }
